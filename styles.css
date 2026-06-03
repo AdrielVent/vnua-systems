@@ -224,10 +224,13 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 #cube-canvas {
   display: block;
+  max-width: 100vw;
+  height: auto;
   cursor: grab;
 }
 
@@ -374,6 +377,19 @@ body::after {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+}
+
+.division-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: center;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 /* Division tag */
@@ -526,6 +542,7 @@ body::after {
 .labs-portfolio-link {
   display: grid;
   gap: 0.55rem;
+  min-width: 0;
   margin-top: 1rem;
   padding: 1rem 1.15rem;
   border: 1px solid rgba(255,107,0,0.32);
@@ -547,6 +564,8 @@ body::after {
   font-family: var(--font-mono);
   font-size: 8px;
   letter-spacing: 0.18em;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
@@ -565,6 +584,9 @@ body::after {
   align-items: center;
   justify-content: center;
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .geo-ring {
@@ -848,15 +870,22 @@ body::after {
 
 /* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 900px) {
+  .division-grid   { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .project-grid    { grid-template-columns: minmax(0, 1fr); }
   .section-grid   { grid-template-columns: 1fr; }
+  .section-visual { display: none; }
   .about-inner    { grid-template-columns: 1fr; gap: 3rem; }
   .footer-top     { flex-direction: column; }
   .footer-links   { flex-wrap: wrap; gap: 2rem; }
   .hud-coords, .hud-identity { display: none; }
-  .hud-nav        { gap: 1rem; }
+  .hud-right      { display: none; }
 }
 
 @media (max-width: 600px) {
+  body            { cursor: auto; }
+  #cursor, #cursor-ring { display: none; }
+  #hud-header     { padding: 0 1rem; }
+  .hud-left .hud-sep { display: none; }
   .section        { padding: 5rem 1.25rem; }
   .hero-title     { font-size: clamp(3rem, 14vw, 5rem); }
   .cube-controls  { gap: 0.5rem; }
