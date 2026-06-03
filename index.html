@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VNUA SYSTEMS — The creative-engineering identity of Adriel Ventura. Labs, Studio, Systems, Apparel." />
+  <meta name="theme-color" content="#0A0A0C" />
+  <title>VNUA SYSTEMS — Adriel Ventura</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Three.js r169 via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r169/three.min.js" defer></script>
+
+  <!-- App logic (deferred so DOM is ready) -->
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+<!-- ─────────────────────────────────────────
+  CUSTOM CURSOR
+──────────────────────────────────────────── -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ─────────────────────────────────────────
+  HUD HEADER
+──────────────────────────────────────────── -->
+<header id="hud-header">
+  <div class="hud-left">
+    <a href="#hero" class="hud-logo">VNUA</a>
+    <div class="hud-sep"></div>
+    <div class="hud-identity">
+      Identity: <span>ADRIEL VENTURA</span> // Origin: <span>2018</span>
+    </div>
+    <div class="hud-sep"></div>
+    <div class="hud-coords">
+      <span>LAT: 40.7128° N</span> &nbsp; <span>LON: 74.0060° W</span>
+    </div>
+  </div>
+
+  <div class="hud-right">
+    <nav class="hud-nav" aria-label="Main navigation">
+      <a href="#labs">LABS</a>
+      <a href="#systems">SYSTEMS</a>
+      <a href="#studio">STUDIO</a>
+      <a href="#apparel">APPAREL</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+    <div class="hud-sep"></div>
+    <div class="hud-status">
+      <div class="dot" aria-hidden="true"></div>
+      VNUA ARCHIVE // SECURE CONNECTION
+    </div>
+    <div class="hud-sep"></div>
+    <span style="font-family:var(--font-mono);font-size:10px;color:rgba(0,243,255,0.6);" id="hud-time" aria-label="System time">00:00:00</span>
+  </div>
+</header>
+
+<!-- ─────────────────────────────────────────
+  HERO — 3D CUBE VIEWPORT
+──────────────────────────────────────────── -->
+<section id="hero" aria-label="VNUA Systems hero">
+
+  <!-- Grid crosshairs -->
+  <div class="crosshair crosshair-h" aria-hidden="true"></div>
+  <div class="crosshair crosshair-v" aria-hidden="true"></div>
+
+  <!-- Corner brackets -->
+  <div class="corner corner-tl" aria-hidden="true"></div>
+  <div class="corner corner-tr" aria-hidden="true"></div>
+  <div class="corner corner-bl" aria-hidden="true"></div>
+  <div class="corner corner-br" aria-hidden="true"></div>
+
+  <!-- Three.js Canvas -->
+  <div id="cube-canvas-wrap" aria-hidden="true">
+    <canvas id="cube-canvas" width="600" height="600"></canvas>
+  </div>
+
+  <!-- HUD readouts -->
+  <div class="hud-readout hud-readout-tl" aria-hidden="true">
+    <div>ID: VNUA_SYS_MAIN</div>
+    <div>STAT: <span>NOMINAL</span></div>
+    <div>LAB: <span>ACTIVE</span></div>
+    <div>RENDER: <span>THREE.JS r169</span></div>
+  </div>
+
+  <div class="hud-readout hud-readout-tr" aria-hidden="true">
+    <div>PROJECTS: <span>08</span></div>
+    <div>PROTOTYPES: <span>03</span></div>
+    <div>AUTHORITY: <span>A. VENTURA</span></div>
+    <div>VERSION: <span>2026.01</span></div>
+  </div>
+
+  <!-- Hero text -->
+  <div class="hero-text-wrap">
+    <p class="hero-eyebrow">Creative Engineering Identity</p>
+    <h1 class="hero-title">VNUA<br><span class="accent">SYSTEMS</span></h1>
+    <p class="hero-sub">Mechanical Engineering &middot; Digital Systems &middot; Technical Apparel</p>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" aria-hidden="true">SCROLL TO EXPLORE</div>
+
+  <!-- Cube controls -->
+  <div class="cube-controls" role="group" aria-label="Cube controls">
+    <button class="cube-btn" onclick="scrambleCube()">SCRAMBLE</button>
+    <button class="cube-btn" onclick="resetCubeView()">RESET VIEW</button>
+  </div>
+
+</section>
+
+<!-- ─────────────────────────────────────────
+  CONTENT SECTIONS
+──────────────────────────────────────────── -->
+<div id="content">
+
+  <!-- VNUA LABS -->
+  <section id="labs" class="section section--labs" aria-label="VNUA Labs">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+        <!-- Text column -->
+        <div>
+          <div class="div-tag">
+            <div class="tag-dot"></div>
+            <div class="tag-line"></div>
+            VNUA LABS // DIV-01
+          </div>
+          <h2 class="section-heading">
+            <span class="word-accent">LABS</span><br>&amp; HARDWARE
+          </h2>
+          <p class="section-sub">
+            Mechanical design applying engineering principles to real-world product development.
+            CAD, FEA simulation, and rapid prototyping under one roof.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="card">
+              <div class="card-id">LAB-PROJ-001</div>
+              <div class="card-title">Aero-Drone Chassis</div>
+              <div class="card-desc">Carbon fiber quadcopter frame optimized through generative CAD and topology optimization.</div>
+              <div class="card-tag">IN PROGRESS</div>
+            </div>
+            <div class="card">
+              <div class="card-id">LAB-PROJ-002</div>
+              <div class="card-title">FEA Thermal Rig</div>
+              <div class="card-desc">Finite Element Analysis of composite material panels under dynamic thermal loading conditions.</div>
+              <div class="card-tag">PROTOTYPE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual column -->
+        <div class="section-visual" style="height:400px;" aria-hidden="true">
+          <div class="geo-ring" style="width:320px;height:320px;animation-duration:22s;"></div>
+          <div class="geo-ring" style="width:220px;height:220px;animation-duration:16s;animation-direction:reverse;"></div>
+          <div class="geo-ring" style="width:120px;height:120px;animation-duration:10s;"></div>
+          <!-- Inner label -->
+          <div style="text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;color:var(--c-orange);text-transform:uppercase;">
+            <div style="font-size:2.5rem;font-weight:900;color:rgba(255,107,0,0.9);line-height:1;">CAD</div>
+            <div>SIMULATION</div>
+            <div style="color:rgba(255,255,255,0.2);margin-top:0.5rem;font-size:8px;">FEA // GENERATIVE</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VNUA SYSTEMS -->
+  <section id="systems" class="section section--systems" aria-label="VNUA Systems">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+        <!-- Visual column (left this time) -->
+        <div class="section-visual" style="height:400px;" aria-hidden="true">
+          <div class="geo-ring" style="width:300px;height:300px;animation-duration:18s;animation-direction:reverse;"></div>
+          <div class="geo-ring" style="width:200px;height:200px;animation-duration:12s;"></div>
+          <div class="geo-ring" style="width:100px;height:100px;animation-duration:8s;animation-direction:reverse;"></div>
+          <div style="text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;color:var(--c-green);text-transform:uppercase;">
+            <div style="font-size:2.5rem;font-weight:900;color:rgba(0,230,107,0.9);line-height:1;">&lt;/&gt;</div>
+            <div>DIGITAL SYS</div>
+            <div style="color:rgba(255,255,255,0.2);margin-top:0.5rem;font-size:8px;">FULL-STACK // AI</div>
+          </div>
+        </div>
+
+        <!-- Text column -->
+        <div>
+          <div class="div-tag">
+            <div class="tag-dot"></div>
+            <div class="tag-line"></div>
+            VNUA SYSTEMS // DIV-02
+          </div>
+          <h2 class="section-heading">
+            <span class="word-accent">SYSTEMS</span><br>&amp; CODE
+          </h2>
+          <p class="section-sub">
+            Architecting full-stack web applications, AI workflows, and digital infrastructure.
+            Bridging the gap between code and creative logic.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="card">
+              <div class="card-id">SYS-PROJ-001</div>
+              <div class="card-title">VNUA Web Platform</div>
+              <div class="card-desc">This site — built with Next.js, Three.js, Zustand state management, and a custom design system.</div>
+              <div class="card-tag">LIVE</div>
+            </div>
+            <div class="card">
+              <div class="card-id">SYS-PROJ-002</div>
+              <div class="card-title">AI Workflow Engine</div>
+              <div class="card-desc">Automated design-to-prototype pipeline using LLM-driven planning and structured data extraction.</div>
+              <div class="card-tag">IN DEVELOPMENT</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VNUA STUDIO -->
+  <section id="studio" class="section section--studio" aria-label="VNUA Studio">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+        <div>
+          <div class="div-tag">
+            <div class="tag-dot"></div>
+            <div class="tag-line"></div>
+            VNUA STUDIO // DIV-03
+          </div>
+          <h2 class="section-heading">
+            <span class="word-accent">STUDIO</span><br>&amp; DESIGN
+          </h2>
+          <p class="section-sub">
+            Visual identity, logo systems, and brand design. Where engineering precision
+            meets creative aesthetics and typographic rigor.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="card">
+              <div class="card-id">STU-PROJ-001</div>
+              <div class="card-title">VNUA Identity System</div>
+              <div class="card-desc">Complete visual identity and typographic guidelines for the VNUA brand ecosystem.</div>
+              <div class="card-tag">ACTIVE</div>
+            </div>
+            <div class="card">
+              <div class="card-id">STU-PROJ-002</div>
+              <div class="card-title">HUD Design System</div>
+              <div class="card-desc">Aerospace-inspired UI language: monospace grids, scanlines, cyan anchors, and glass panels.</div>
+              <div class="card-tag">ACTIVE</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-visual" style="height:400px;" aria-hidden="true">
+          <div class="geo-ring" style="width:280px;height:280px;animation-duration:20s;"></div>
+          <div class="geo-ring" style="width:180px;height:180px;animation-duration:14s;animation-direction:reverse;border-style:dashed;"></div>
+          <div class="geo-ring" style="width:80px;height:80px;animation-duration:7s;"></div>
+          <div style="text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;color:var(--c-blue);text-transform:uppercase;">
+            <div style="font-size:2.5rem;font-weight:900;color:rgba(0,102,255,0.9);line-height:1;">ART</div>
+            <div>DIRECTION</div>
+            <div style="color:rgba(255,255,255,0.2);margin-top:0.5rem;font-size:8px;">BRAND // UI</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VNUA APPAREL -->
+  <section id="apparel" class="section section--apparel" aria-label="VNUA Apparel">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+        <div class="section-visual" style="height:400px;" aria-hidden="true">
+          <div class="geo-ring" style="width:300px;height:300px;animation-duration:24s;animation-direction:reverse;"></div>
+          <div class="geo-ring" style="width:200px;height:200px;animation-duration:15s;border-style:dashed;"></div>
+          <div class="geo-ring" style="width:100px;height:100px;animation-duration:9s;animation-direction:reverse;"></div>
+          <div style="text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;color:var(--c-red);text-transform:uppercase;">
+            <div style="font-size:2.5rem;font-weight:900;color:rgba(255,0,60,0.9);line-height:1;">380</div>
+            <div>GSM</div>
+            <div style="color:rgba(255,255,255,0.2);margin-top:0.5rem;font-size:8px;">PROTO // APPAREL</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="div-tag">
+            <div class="tag-dot"></div>
+            <div class="tag-line"></div>
+            VNUA APPAREL // DIV-04
+          </div>
+          <h2 class="section-heading">
+            <span class="word-accent">APPAREL</span><br>&amp; PROTOTYPES
+          </h2>
+          <p class="section-sub">
+            Engineered technical apparel and prototype concepts. Designed with the same
+            rigour as hardware: material specs, tolerance testing, and fit engineering.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="card">
+              <div class="card-id">APR-PROTO-001</div>
+              <div class="card-title">VNUA Proto-Shell v1</div>
+              <div class="card-desc">High-tensile carbon-weave matrix. Engineered for creative mobility and urban resilience. 450g/m².</div>
+              <div class="card-tag">PROTOTYPE — $249</div>
+            </div>
+            <div class="card">
+              <div class="card-id">APR-PROTO-002</div>
+              <div class="card-title">Lab-Issued Heavy Tee</div>
+              <div class="card-desc">Heavyweight 100% organic cotton. 380g/m². Built for long-duration studio sessions.</div>
+              <div class="card-tag">ACTIVE — $89</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- /#content -->
+
+<!-- ─────────────────────────────────────────
+  ABOUT
+──────────────────────────────────────────── -->
+<section id="about" aria-label="About VNUA">
+  <div class="about-inner" style="max-width:1200px;margin:0 auto;padding:8rem 2rem;">
+
+    <div>
+      <div class="about-label">// IDENTITY FILE</div>
+      <h2 class="about-title">ADRIEL<br>VENTURA</h2>
+      <p class="about-body">
+        <strong>VNUA</strong> is the creative-engineering alias of Adriel Ventura —
+        conceptualized in eighth grade as a moniker for visual art and design,
+        derived from selected letters in <em>Ventura</em>.
+        <br><br>
+        As a <strong>Mechanical Engineering student</strong>, designer, and builder,
+        VNUA now bridges technical rigor with creative aesthetic across five divisions:
+        Labs, Systems, Studio, Apparel, and Archive.
+        <br><br>
+        The mission: apply <strong>systems thinking</strong> to everything — from software
+        and automation to physical hardware and technical apparel.
+      </p>
+    </div>
+
+    <div>
+      <div class="about-stats">
+        <div class="stat-block">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Active Divisions</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">2018</div>
+          <div class="stat-label">Brand Origin</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">ME</div>
+          <div class="stat-label">Engineering Focus</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Live Prototypes</div>
+        </div>
+      </div>
+
+      <!-- Sys log -->
+      <div class="sys-log" style="margin-top:1.5rem;" role="log" aria-live="polite">
+        <div class="sys-log-title">[ SYSTEM LOG // VNUA OS_INIT ]</div>
+        <div id="sys-log-lines" style="max-height:160px;overflow-y:auto;"></div>
+        <div class="sys-log-line" style="margin-top:0.5rem;">
+          <span class="sys-log-cursor" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────
+  FOOTER
+──────────────────────────────────────────── -->
+<footer id="footer" aria-label="Site footer">
+  <div class="footer-inner">
+
+    <!-- Ticker -->
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker">
+        <span>[ SYSTEM LOG // VNUA OS_INIT ]</span>
+        &nbsp;&nbsp; &gt; LOADING DIRECTIVES... [OK] &nbsp;&nbsp;
+        &gt; SYNCING CAD REPOSITORIES... [OK] &nbsp;&nbsp;
+        &gt; COMPILING PORTFOLIO ASSETS... [OK] &nbsp;&nbsp;
+        &gt; ESTABLISHING SYSTEMS ARCHITECTURE... [OK] &nbsp;&nbsp;
+        <span>LAT: 40.7128° N</span> &nbsp;&nbsp;
+        <span>LON: 74.0060° W</span> &nbsp;&nbsp;
+        &gt; PROTOTYPE LAB NOMINAL. READY TO BUILD. &nbsp;&nbsp;
+        <!-- Duplicate for seamless loop -->
+        <span>[ SYSTEM LOG // VNUA OS_INIT ]</span>
+        &nbsp;&nbsp; &gt; LOADING DIRECTIVES... [OK] &nbsp;&nbsp;
+        &gt; SYNCING CAD REPOSITORIES... [OK] &nbsp;&nbsp;
+        &gt; COMPILING PORTFOLIO ASSETS... [OK] &nbsp;&nbsp;
+        &gt; ESTABLISHING SYSTEMS ARCHITECTURE... [OK] &nbsp;&nbsp;
+        <span>LAT: 40.7128° N</span> &nbsp;&nbsp;
+        <span>LON: 74.0060° W</span> &nbsp;&nbsp;
+        &gt; PROTOTYPE LAB NOMINAL. READY TO BUILD.
+      </div>
+    </div>
+
+    <!-- Footer top -->
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">VNUA</div>
+        <div class="footer-tagline">Creative Engineering Identity // 2018 — Present</div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Divisions</h5>
+          <a href="#labs">VNUA Labs</a>
+          <a href="#systems">VNUA Systems</a>
+          <a href="#studio">VNUA Studio</a>
+          <a href="#apparel">VNUA Apparel</a>
+        </div>
+        <div class="footer-col">
+          <h5>Archive</h5>
+          <a href="#about">About</a>
+          <a href="#about">Projects</a>
+          <a href="#about">Prototypes</a>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <span>&copy; 2026 VNUA SYSTEMS. ALL RIGHTS RESERVED.</span>
+      <span class="coords">LAT: 40.7128° N &nbsp; LON: 74.0060° W</span>
+      <span>ADRIEL VENTURA // SECURE CONNECTION</span>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
