@@ -9,7 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Inject 2026 Aerospace Typography Layer -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -29,17 +33,26 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
         }
 
-        body {
+        body, input, button, .ticker, .telemetry-left, .telemetry-right {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             background-color: var(--bg-carbon);
             color: var(--stark-white);
             overflow-x: hidden;
             font-size: 11px;
-            letter-spacing: 0.1em;
             line-height: 1.5;
+        }
+
+        /* Big High-Impact Display Block Focus */
+        h1, h2, .brand-sub, .hero-section h1, .hero-brand, .panel-title, .hub-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         /* Fixed Canvas Layering */
