@@ -523,6 +523,42 @@ body::after {
 .section--studio  .card-tag { color: var(--c-blue);   border-color: rgba(0,102,255,0.4); }
 .section--apparel .card-tag { color: var(--c-red);    border-color: rgba(255,0,60,0.4); }
 
+.labs-portfolio-link {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(255,107,0,0.32);
+  background: linear-gradient(90deg, rgba(255,107,0,0.1), rgba(255,107,0,0.02));
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.labs-portfolio-link:hover,
+.labs-portfolio-link:focus-visible {
+  border-color: rgba(255,107,0,0.78);
+  background: linear-gradient(90deg, rgba(255,107,0,0.18), rgba(255,107,0,0.04));
+  transform: translateY(-2px);
+}
+
+.labs-portfolio-link__status,
+.labs-portfolio-link__meta {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.labs-portfolio-link__status { color: var(--c-orange); }
+.labs-portfolio-link__meta { color: rgba(255,255,255,0.32); }
+
+.labs-portfolio-link strong {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* Section visual accent — right column abstract geometry */
 .section-visual {
   display: flex;
