@@ -1,0 +1,208 @@
+/* Vnua Systems. One stylesheet for every page.
+   Type is Tinos (the free Times New Roman) with Cousine for small labels, both served from assets/fonts.
+   Color comes from the cube; everything you read is ink on paper. */
+@import url("fonts/fonts.css");
+
+:root {
+  --paper: #f5f3ee;
+  --sheet: #fbfaf7;
+  --ink: #1c1c1a;
+  --muted: #5b5852;
+  --rule: #dcd7cd;
+  --rule-soft: #e9e5dd;
+  --focus: #1c1c1a;
+  /* Cube sticker colors. Only for small swatches, never for text. */
+  --c-red: #c8102e;
+  --c-orange: #ff6a13;
+  --c-yellow: #f2c200;
+  --c-green: #0b9b48;
+  --c-blue: #0a52be;
+  --c-white: #f4f4f0;
+  --serif: Tinos, "Times New Roman", Times, serif;
+  --mono: Cousine, "Courier New", ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131415; --sheet: #1a1b1d; --ink: #ecebe6; --muted: #a9a59c;
+    --rule: #34363a; --rule-soft: #26282b; --focus: #ecebe6; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131415; --sheet: #1a1b1d; --ink: #ecebe6; --muted: #a9a59c;
+  --rule: #34363a; --rule-soft: #26282b; --focus: #ecebe6; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+main { flex: 1; }
+h1, h2, h3, p, ol, ul, dl, dd, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+a { color: inherit; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 640px) { .wrap { padding: 0 32px; } }
+
+a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+.skip-link { position: absolute; left: 16px; top: -48px; z-index: 10; background: var(--ink); color: var(--paper); padding: 8px 12px; font-size: 15px; }
+.skip-link:focus { top: 12px; }
+.text-link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--muted); }
+.text-link:hover { text-decoration-color: var(--ink); text-decoration-thickness: 2px; }
+
+/* Header and tabs.
+   Phone: brand on one line, the tabs on a full-width row under it.
+   Wider: brand left, tabs right. The current page's tab is underlined. */
+.site-header { border-bottom: 1px solid var(--rule); background: var(--paper); }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-height: 56px; font-weight: 700; font-size: 17px; text-decoration: none; }
+.brand svg { width: 22px; height: 22px; flex: none; }
+.tabs { width: calc(100% + 32px); margin: 0 -16px; padding: 0 16px; border-top: 1px solid var(--rule-soft); overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs ul { display: flex; gap: 22px; }
+.tabs a { position: relative; display: block; padding: 12px 0 13px; font-size: 16px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { color: var(--ink); }
+.tabs a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); }
+@media (min-width: 640px) {
+  .brand { min-height: 64px; }
+  .tabs { width: auto; margin: 0; padding: 0; border-top: 0; overflow: visible; }
+  .tabs ul { gap: 28px; }
+  .tabs a { padding: 21px 0 20px; font-size: 16px; }
+}
+
+/* Buttons */
+.actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 2px; font: 400 16px/1 var(--serif); text-decoration: none; border: 1px solid var(--ink); cursor: pointer; background: transparent; color: var(--ink); transition: background-color .15s, color .15s; }
+.btn-solid { background: var(--ink); color: var(--paper); }
+.btn-solid:hover { background: transparent; color: var(--ink); }
+.btn:not(.btn-solid):hover { background: var(--ink); color: var(--paper); }
+.btn-sm { min-height: 36px; padding: 0 12px; font-size: 15px; border-color: var(--rule); }
+
+/* Home hero */
+.hero .wrap { display: grid; gap: 32px; padding-top: 48px; padding-bottom: 56px; }
+@media (min-width: 880px) { .hero .wrap { grid-template-columns: minmax(0, 1fr) 360px; gap: 48px; align-items: center; padding-top: 72px; padding-bottom: 72px; } }
+.eyebrow { font-size: 13px; color: var(--muted); }
+.hero h1 { margin-top: 12px; font-size: clamp(2.25rem, 5vw, 3.4rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; }
+.lead { margin-top: 20px; max-width: 34em; font-size: 19px; line-height: 1.55; color: var(--muted); }
+.lead strong { color: var(--ink); font-weight: 700; }
+
+/* Cube. Hidden until the script has a working WebGL cube, so no-JS visitors never see an empty box. */
+.cube { display: none; width: 100%; max-width: 360px; justify-self: center; }
+.cube.is-on { display: block; }
+.cube-stage { position: relative; aspect-ratio: 1 / 1; border: 1px solid var(--rule); background: var(--sheet); border-radius: 2px; touch-action: none; cursor: grab; }
+.cube-stage:active { cursor: grabbing; }
+.cube-stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
+.cube-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.cube-controls .hint { font-size: 14px; color: var(--muted); }
+.cube-controls .buttons { display: flex; gap: 8px; }
+
+/* Inner page heading */
+.page-head .wrap { padding-top: 44px; padding-bottom: 32px; }
+@media (min-width: 880px) { .page-head .wrap { padding-top: 64px; padding-bottom: 40px; } }
+.crumbs { font-size: 14px; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+.page-head h1 { margin-top: 10px; font-size: clamp(2rem, 4.4vw, 2.9rem); line-height: 1.08; font-weight: 700; letter-spacing: -0.015em; }
+.page-head .lead { margin-top: 14px; }
+
+/* Sections: a short label column, then the content */
+.section { border-top: 1px solid var(--rule); }
+.section .wrap { display: grid; gap: 20px; padding-top: 40px; padding-bottom: 48px; }
+@media (min-width: 880px) { .section .wrap { grid-template-columns: 240px minmax(0, 1fr); gap: 48px; padding-top: 56px; padding-bottom: 64px; } }
+.section h2 { font-size: 22px; line-height: 1.25; font-weight: 700; }
+.section-note { margin-top: 8px; font-size: 15px; color: var(--muted); }
+.prose { max-width: 38em; }
+.prose p + p, .prose p + ul, .prose ul + p { margin-top: 16px; }
+.prose p, .prose li { color: var(--muted); }
+.prose strong { color: var(--ink); font-weight: 700; }
+.prose h2 { margin-top: 36px; margin-bottom: 10px; }
+.prose h2:first-child { margin-top: 0; }
+.prose ul li { position: relative; padding-left: 18px; }
+.prose ul li + li { margin-top: 6px; }
+.prose ul li::before { content: ""; position: absolute; left: 2px; top: 0.72em; width: 6px; height: 1px; background: var(--muted); }
+
+/* Work index: a plain table, one row per product */
+.index { width: 100%; border-collapse: collapse; }
+.index th { text-align: left; font: 400 13px/1.4 var(--mono); color: var(--muted); padding: 0 16px 8px 0; border-bottom: 1px solid var(--ink); }
+.index td { vertical-align: top; padding: 18px 16px 18px 0; border-bottom: 1px solid var(--rule); color: var(--muted); font-size: 16px; }
+.index td:last-child, .index th:last-child { padding-right: 0; }
+.index .no { width: 44px; font: 400 14px/1.6 var(--mono); }
+.index .name a { color: var(--ink); font-size: 18px; font-weight: 700; text-decoration: none; }
+.index .name a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.index .st { width: 200px; }
+@media (max-width: 719px) {
+  .index thead { display: none; }
+  .index, .index tbody, .index tr, .index td { display: block; }
+  .index tr { display: grid; grid-template-columns: 36px minmax(0, 1fr); padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  .index tr:first-child { border-top: 1px solid var(--ink); }
+  .index td { padding: 0; border: 0; }
+  .index .no { grid-row: span 3; width: auto; padding-top: 3px; }
+  .index .what { margin-top: 4px; }
+  .index .st { width: auto; margin-top: 8px; }
+}
+
+.status { display: inline-flex; align-items: flex-start; gap: 8px; font-size: 15px; line-height: 1.4; color: var(--muted); }
+.status::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: 5px; border-radius: 1px; background: var(--swatch, var(--muted)); }
+.status-live { --swatch: var(--c-green); }
+.status-testing { --swatch: var(--c-orange); }
+.status-concept { --swatch: var(--c-blue); }
+.status-soon { --swatch: var(--c-yellow); }
+
+/* Product page: facts on the left, the story on the right */
+.case .wrap { display: grid; gap: 32px; padding-top: 8px; padding-bottom: 64px; }
+@media (min-width: 880px) { .case .wrap { grid-template-columns: 240px minmax(0, 1fr); gap: 48px; } }
+.facts > div { padding: 10px 0; border-bottom: 1px solid var(--rule-soft); }
+.facts > div:first-child { border-top: 1px solid var(--ink); }
+.facts dt { font: 400 12px/1.5 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.facts dd { margin-top: 2px; font-size: 16px; overflow-wrap: anywhere; }
+@media (min-width: 560px) and (max-width: 879px) {
+  .facts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+  .facts > div:nth-child(2) { border-top: 1px solid var(--ink); }
+}
+.next-prev { display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 16px; }
+.next-prev a { color: var(--muted); }
+.next-prev a:hover { color: var(--ink); }
+
+/* Lists with a top rule: engineering projects, contact */
+.rows > li { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.rows > li:first-child { border-top: 1px solid var(--ink); }
+.rows h3 { font-size: 18px; font-weight: 700; line-height: 1.35; }
+.rows .meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.rows p { margin-top: 6px; font-size: 16px; color: var(--muted); }
+.rows .go { margin-top: 10px; font-size: 15px; }
+
+.contact-list > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--rule-soft); }
+.contact-list > div:first-child { border-top: 1px solid var(--ink); }
+.contact-list dt { font-size: 15px; color: var(--muted); padding-top: 1px; }
+.contact-list dd { overflow-wrap: anywhere; }
+
+.site-footer { border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 24px; padding-bottom: 32px; }
+.site-footer nav ul { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-footer a { color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}
+
+/* Small helpers */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.section.flush { border-top: 0; }
+.section.flush .wrap { padding-top: 0; }
+.section.single .wrap { display: block; }
+.side-figure { max-width: 240px; }
+.side-figure figcaption { margin-top: 8px; }
+.render { width: 100%; height: auto; display: block; border: 1px solid var(--rule); background: #fff; }
+.portrait { width: 100%; max-width: 240px; height: auto; display: block; border-radius: 2px; }
+.rows .status { font-size: 14px; }
+.key .status { font-size: 16px; color: var(--ink); }
