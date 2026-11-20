@@ -17,10 +17,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* Vnua Systems. Same type as the DatumPane page (IBM Plex) so Vnua Industries reads as one company.
+    /* Vnua Systems. Same type as the DatumPane page (Tinos, the free Times New Roman, with Cousine for labels) so Vnua Industries reads as one company.
        Color comes from the cube; everything you read is ink on paper. */
     :root {
       --paper: #f5f3ee;
@@ -39,8 +39,8 @@
       --c-blue: #0a52be;
       --c-white: #f4f4f0;
 
-      --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --serif: Tinos, "Times New Roman", Times, serif;
+      --mono: Cousine, "Courier New", ui-monospace, monospace;
       color-scheme: light;
     }
     @media (prefers-color-scheme: dark) {
@@ -72,7 +72,7 @@
       margin: 0;
       background: var(--paper);
       color: var(--ink);
-      font: 400 17px/1.6 var(--sans);
+      font: 400 17px/1.6 var(--serif);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -109,13 +109,15 @@
     .lead { margin-top: 20px; max-width: 34em; font-size: 19px; line-height: 1.55; color: var(--muted); }
     .lead strong { color: var(--ink); font-weight: 500; }
     .actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 2px; font: 500 15px/1 var(--sans); text-decoration: none; border: 1px solid var(--ink); cursor: pointer; background: transparent; color: var(--ink); transition: background-color .15s, color .15s; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 2px; font: 500 15px/1 var(--serif); text-decoration: none; border: 1px solid var(--ink); cursor: pointer; background: transparent; color: var(--ink); transition: background-color .15s, color .15s; }
     .btn-solid { background: var(--ink); color: var(--paper); }
     .btn-solid:hover { background: transparent; color: var(--ink); }
     .btn:not(.btn-solid):hover { background: var(--ink); color: var(--paper); }
 
     /* Cube */
-    .cube { width: 100%; max-width: 360px; justify-self: center; }
+    /* Hidden until the script has a working WebGL cube, so no-JS or no-WebGL visitors never see an empty box. */
+    .cube { display: none; width: 100%; max-width: 360px; justify-self: center; }
+    .cube.is-on { display: block; }
     .cube-stage { position: relative; aspect-ratio: 1 / 1; border: 1px solid var(--rule); background: var(--sheet); border-radius: 2px; touch-action: none; cursor: grab; }
     .cube-stage:active { cursor: grabbing; }
     .cube-stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
@@ -123,7 +125,6 @@
     .cube-controls .hint { font-size: 13px; color: var(--muted); }
     .cube-controls .buttons { display: flex; gap: 8px; }
     .btn-sm { min-height: 36px; padding: 0 12px; font-size: 14px; border-color: var(--rule); }
-    .cube.is-off { display: none; }
 
     /* Sections */
     .section { border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
@@ -355,13 +356,14 @@
     window.addEventListener('DOMContentLoaded', function () {
       var figure = document.getElementById('cube');
       var stage = document.getElementById('cube-stage');
-      if (!window.THREE) { figure.classList.add('is-off'); return; }
+      if (!window.THREE) return;
 
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       var renderer;
       try {
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      } catch (e) { figure.classList.add('is-off'); return; }
+      } catch (e) { return; }
+      figure.classList.add('is-on');
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       stage.appendChild(renderer.domElement);
       renderer.domElement.setAttribute('aria-hidden', 'true');
@@ -370,10 +372,14 @@
       var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
       camera.position.set(0, 0, 11);
 
-      scene.add(new THREE.HemisphereLight(0xffffff, 0x888888, 1.6));
-      var key = new THREE.DirectionalLight(0xffffff, 1.6);
+      // Bright, even light so the sticker colors read true instead of muddy
+      scene.add(new THREE.HemisphereLight(0xffffff, 0xbbbbbb, 2.6));
+      var key = new THREE.DirectionalLight(0xffffff, 2.2);
       key.position.set(4, 6, 8);
       scene.add(key);
+      var fill = new THREE.DirectionalLight(0xffffff, 1.2);
+      fill.position.set(-6, -2, 4);
+      scene.add(fill);
 
       // Sticker order follows BoxGeometry faces: +x, -x, +y, -y, +z, -z
       var stickerColors = [0xc8102e, 0xff6a13, 0xf4f4f0, 0xf2c200, 0x0b9b48, 0x0a52be];
@@ -426,7 +432,7 @@
       function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
       var tweens = [];
       function tween(duration, step, done) {
-        if (reduceMotion.matches || duration === 0) { step(1); if (done) done(); needsRender = true; return; }
+        if (reduceMotion.matches || duration === 0) { step(1); if (done) done(); needsRender = true; wake(); return; }
         tweens.push({ start: performance.now(), duration: duration, step: step, done: done });
         wake();
       }
