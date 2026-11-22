@@ -6,6 +6,6 @@
       <li><a href="https://www.linkedin.com/in/adrielvent/">LinkedIn</a></li>
     </ul>
     <p>{{ site.data.site.footer_note }}</p>
-    <p>{{ site.data.site.footer_small }}</p>
+    {% if site.data.site.footer_small != "" %}<p>{{ site.data.site.footer_small }}</p>{% endif %}
   </div>
 </footer>

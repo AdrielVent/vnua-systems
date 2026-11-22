@@ -14,18 +14,36 @@ facts:
   - label: Portfolio
     value: "[adrielvent.github.io/adriel-portfolio](https://adrielvent.github.io/adriel-portfolio/)"
 ---
-## Silicone mold and drawings · Stellant co-op · 2026
+For each project: what it was, what I did, and where it actually ended up, including what hasn't been tested yet.
 
-I modeled a mold in Autodesk Inventor, 3D printed it, and made the engineering drawings with GD&T. Then I helped mix, degas and inject the silicone on the shop floor. I've also written two engineering change notices there.
+## Silicone mold and drawings
 
-## O-ring cutting fixture · Stellant co-op · 2026
+**Stellant Systems co-op · 2026**
 
-I designed a fixture for cutting O-rings at different diameters and printed four versions, changing each one based on what the technicians using it told me. [More in my portfolio](https://adrielvent.github.io/adriel-portfolio/#work).
+**What I did:** Modeled the mold in Autodesk Inventor, 3D printed it, and made the engineering drawings with GD&T to ASME standards. Then I helped mix, degas and inject the silicone on the shop floor.
 
-## Heat sink for a 100 W CPU · ENGG 114 Heat Transfer · Spring 2026
+**Where it ended up:** We did the first pour with it, and I've written two engineering change notices at Stellant.
 
-A 15-fin aluminum design that my MATLAB model predicts at 69.85 °C, under the 85 °C limit. It hasn't been built or bench tested yet. [Write-up](https://adrielvent.github.io/adriel-portfolio/heat-sink.html).
+## O-ring cutting fixture
 
-## Lunar rover thermal control · NASA L'SPACE Mission Concept Academy · 2026
+**Stellant Systems co-op · 2026**
 
-I was the team's thermal engineer. The Mission Statement section I wrote scored 24 out of 25. It's a student academy, not a job at NASA.
+**What I did:** Designed a fixture for cutting O-rings at different diameters and 3D printed it.
+
+**Where it ended up:** Four versions. I changed each one based on what the technicians using it told me. [More in my portfolio](https://adrielvent.github.io/adriel-portfolio/#work).
+
+## Heat sink for a 100 W CPU
+
+**ENGG 114 Heat Transfer · Spring 2026**
+
+**What I did:** Designed a 15-fin aluminum heat sink and modeled it in MATLAB.
+
+**Where it ended up:** The model predicts 69.85 °C, under the 85 °C limit. It hasn't been built or bench tested yet. [Write-up](https://adrielvent.github.io/adriel-portfolio/heat-sink.html).
+
+## Lunar rover thermal control
+
+**NASA L'SPACE Mission Concept Academy · 2026**
+
+**What I did:** I was the team's thermal engineer and wrote the Mission Statement section.
+
+**Where it ended up:** That section scored 24 out of 25. It's a student academy, not a job at NASA.
