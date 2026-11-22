@@ -1,0 +1,36 @@
+# Name at the top of every page
+name_bold: Vnua
+name_light: Systems
+tagline: Adriel Ventura · Hempstead, New York
+
+# Menu. Items with "children" get a dropdown.
+menu:
+  - label: Home
+    url: index.html
+  - label: Programs
+    url: work.html
+    children:
+      - label: DatumPane
+        url: datumpane.html
+      - label: Vnua Lock
+        url: vnua-lock.html
+      - label: Vnua Connect
+        url: vnua-connect.html
+      - label: All programs
+        url: work.html
+  - label: The Contract
+    url: contract.html
+  - label: Engineering
+    url: engineering.html
+  - label: About
+    url: about.html
+    children:
+      - label: About me
+        url: about.html
+      - label: Contact
+        url: contact.html
+  - label: Store
+    url: https://adrielvent.github.io/vnua-apparel/
+
+footer_note: © 2026 Vnua Industries · Hempstead, New York
+footer_small: I built this site with help from Claude. The work on it is mine.

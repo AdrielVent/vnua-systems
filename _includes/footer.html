@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <ul>
+      {% for item in site.data.site.menu %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endfor %}
+      <li><a href="https://github.com/AdrielVent">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/adrielvent/">LinkedIn</a></li>
+    </ul>
+    <p>{{ site.data.site.footer_note }}</p>
+    <p>{{ site.data.site.footer_small }}</p>
+  </div>
+</footer>

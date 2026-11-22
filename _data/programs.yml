@@ -1,0 +1,37 @@
+# Shown on the Programs page, in this order.
+- name: DatumPane
+  link: datumpane.html
+  text: Shows a machine shop exactly what changed between two versions of a drawing, and what has to be checked because of it.
+  status: Idea
+  status_class: idea
+  group: Defense manufacturing
+- name: Vnua Lock
+  link: vnua-lock.html
+  text: A voice log for people who build things. The web version works and never uploads your audio.
+  status: Web app works, iPhone app in progress
+  status_class: building
+  group: Defense manufacturing
+- name: Build record
+  link: ""
+  text: DatumPane and Vnua Lock together. One record per part, showing which drawing it was made to and what happened at the machine.
+  status: Planned
+  status_class: planned
+  group: Defense manufacturing
+- name: The Contract
+  link: contract.html
+  text: Hofstra AIAA's spring competition. Two student companies, one made-up contract.
+  status: Planning
+  status_class: building
+  group: Defense manufacturing
+- name: Vnua Connect
+  link: vnua-connect.html
+  text: Students find new clubs, RSVP and check in with a QR pass. Officers see who actually showed up.
+  status: Live
+  status_class: live
+  group: Other work
+- name: Vnua Apparel
+  link: vnua-apparel.html
+  text: The store. Club merch for SHPE and AIAA, plus Drop 01.
+  status: Nothing on sale yet
+  status_class: soon
+  group: Other work

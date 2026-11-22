@@ -1,0 +1,120 @@
+# Pages CMS: edit this site at https://app.pagescms.org (sign in with GitHub, open AdrielVent/vnua-systems).
+# Saving there commits to main, and GitHub Pages rebuilds the site in about a minute.
+media:
+  input: assets/img
+  output: assets/img
+
+content:
+  - name: home
+    label: Home page
+    type: file
+    path: _data/home.yml
+    format: yaml
+    fields:
+      - { name: hero_title, label: Big headline, type: string }
+      - { name: hero_text, label: Text under the headline, type: text }
+      - { name: hero_image, label: Photo behind the headline, type: image }
+      - { name: hero_credit, label: Photo credit, type: string }
+      - { name: hero_button, label: Button text, type: string }
+      - { name: hero_link, label: Button link, type: string }
+      - { name: work_title, label: "Section title: what I'm working on", type: string }
+      - { name: work_intro, label: Section intro, type: text }
+      - name: tiles
+        label: Tiles
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: One line, type: text }
+          - { name: status, label: Status, type: string }
+          - { name: status_class, label: Status color, type: select, options: { values: ["", idea, building, live, planned, soon] } }
+          - { name: image, label: Picture, type: image }
+          - { name: contain, label: "Show whole picture (no crop)", type: boolean }
+          - { name: link, label: Link, type: string }
+      - { name: contract_title, label: Blue band title, type: string }
+      - { name: contract_text, label: Blue band text, type: text }
+      - { name: contract_button, label: Blue band button, type: string }
+      - { name: contract_link, label: Blue band link, type: string }
+      - { name: news_title, label: News title, type: string }
+      - name: news
+        label: News
+        type: object
+        list: true
+        fields:
+          - { name: date, label: Date, type: date }
+          - { name: title, label: Headline, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: image, label: "Picture (optional)", type: image }
+          - { name: link, label: "Link (optional)", type: string }
+      - { name: founder_title, label: About-me title, type: string }
+      - { name: founder_text, label: About-me text, type: text }
+      - { name: founder_image, label: About-me photo, type: image }
+      - { name: founder_caption, label: Photo caption, type: string }
+      - { name: founder_button, label: Button text, type: string }
+      - { name: founder_link, label: Button link, type: string }
+
+  - name: pages
+    label: Pages
+    type: collection
+    path: pages
+    format: yaml-frontmatter
+    view:
+      fields: [title, permalink]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: lead, label: Intro line, type: text }
+      - { name: image, label: Main picture, type: image }
+      - { name: image_alt, label: "Picture description (for screen readers)", type: string }
+      - { name: image_caption, label: Picture caption, type: string }
+      - name: facts
+        label: At a glance box
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: value, label: "Value (links like [text](url) work)", type: string }
+      - { name: body, label: Page text, type: rich-text }
+      - { name: layout, type: string, hidden: true, default: page }
+      - { name: permalink, label: Web address, type: string, readonly: true }
+      - { name: parent, label: Breadcrumb parent, type: string }
+      - { name: parent_url, label: Breadcrumb parent link, type: string }
+
+  - name: programs
+    label: Programs list
+    type: file
+    path: _data/programs.yml
+    format: yaml
+    list: true
+    fields:
+      - { name: name, label: Name, type: string }
+      - { name: text, label: One line, type: text }
+      - { name: status, label: Status, type: string }
+      - { name: status_class, label: Status color, type: select, options: { values: [idea, building, live, planned, soon] } }
+      - { name: link, label: Link, type: string }
+      - { name: group, label: Group, type: select, options: { values: [Defense manufacturing, Other work] } }
+
+  - name: site
+    label: Name, menu and footer
+    type: file
+    path: _data/site.yml
+    format: yaml
+    fields:
+      - { name: name_bold, label: "Name (bold part)", type: string }
+      - { name: name_light, label: "Name (light part)", type: string }
+      - { name: tagline, label: Line under the name, type: string }
+      - name: menu
+        label: Menu
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: url, label: Link, type: string }
+          - name: children
+            label: Dropdown items
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: url, label: Link, type: string }
+      - { name: footer_note, label: Footer line, type: string }
+      - { name: footer_small, label: Footer small print, type: string }

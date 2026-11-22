@@ -1,0 +1,70 @@
+---
+layout: default
+---
+{% assign h = site.data.home %}
+<section class="hero" style="background-image: url('{{ h.hero_image }}')" aria-labelledby="hero-title">
+  <div class="wrap">
+    <h1 id="hero-title">{{ h.hero_title }}</h1>
+    <p>{{ h.hero_text }}</p>
+    {% if h.hero_button %}<a class="btn" href="{{ h.hero_link }}">{{ h.hero_button }}</a>{% endif %}
+  </div>
+  {% if h.hero_credit %}<span class="credit">{{ h.hero_credit }}</span>{% endif %}
+</section>
+
+<section class="block" aria-labelledby="work-title">
+  <div class="wrap">
+    <div class="block-head"><h2 id="work-title">{{ h.work_title }}</h2><a class="all" href="work.html">All programs</a></div>
+    {% if h.work_intro %}<p class="intro">{{ h.work_intro }}</p>{% endif %}
+    <ul class="tiles">
+      {% for t in h.tiles %}
+      <li class="tile">
+        <a class="pic{% if t.contain %} contain{% endif %}" href="{{ t.link }}" tabindex="-1" aria-hidden="true"><img src="{{ t.image }}" alt="" loading="lazy"></a>
+        <h3><a href="{{ t.link }}">{{ t.title }}</a></h3>
+        <p>{{ t.text }}</p>
+        {% if t.status != "" %}<p class="status {{ t.status_class }}">{{ t.status }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="contract-title">
+  <div class="wrap">
+    <div>
+      <h2 id="contract-title">{{ h.contract_title }}</h2>
+      <p>{{ h.contract_text }}</p>
+    </div>
+    <p><a class="btn" href="{{ h.contract_link }}">{{ h.contract_button }}</a></p>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="news-title">
+  <div class="wrap">
+    <div class="block-head"><h2 id="news-title">{{ h.news_title }}</h2></div>
+    <div class="news">
+      {% for n in h.news %}
+      <article>
+        {% if n.image != "" %}<span class="pic"><img src="{{ n.image }}" alt="" loading="lazy"></span>{% endif %}
+        <time datetime="{{ n.date | date: '%Y-%m-%d' }}">{{ n.date | date: '%b %-d, %Y' }}</time>
+        <h3>{{ n.title }}</h3>
+        <p>{{ n.text }}</p>
+        {% if n.link != "" %}<a class="more" href="{{ n.link }}">Read more</a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="block gray" aria-labelledby="founder-title">
+  <div class="wrap founder">
+    <figure class="figure">
+      <img src="{{ h.founder_image }}" alt="Adriel Ventura smiling in a navy jacket in front of a Stellant trade show banner" loading="lazy">
+      {% if h.founder_caption %}<figcaption>{{ h.founder_caption }}</figcaption>{% endif %}
+    </figure>
+    <div>
+      <h2 id="founder-title">{{ h.founder_title }}</h2>
+      <p>{{ h.founder_text }}</p>
+      <a class="btn plain" href="{{ h.founder_link }}">{{ h.founder_button }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="masthead">
+  <a class="wordmark" href="./">
+    <span class="name"><b>{{ site.data.site.name_bold }}</b> <span>{{ site.data.site.name_light }}</span></span>
+    <span class="rule"></span>
+    <span class="tag">{{ site.data.site.tagline }}</span>
+  </a>
+</header>
+{% assign here = page.url | remove_first: '/' %}{% if here == '' %}{% assign here = 'index.html' %}{% endif %}
+<nav class="menu" aria-label="Site">
+  <ul>
+    {% for item in site.data.site.menu %}
+    {% assign active = false %}{% if item.url == here %}{% assign active = true %}{% endif %}
+    {% for c in item.children %}{% if c.url == here %}{% assign active = true %}{% endif %}{% endfor %}
+    <li{% if item.children %} class="has-sub"{% endif %}>
+      <a href="{{ item.url }}"{% if active %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% if item.children %}<ul class="sub">{% for c in item.children %}<li><a href="{{ c.url }}">{{ c.label }}</a></li>{% endfor %}</ul>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

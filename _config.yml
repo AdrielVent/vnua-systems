@@ -1,0 +1,12 @@
+# Vnua Systems. GitHub Pages builds this with Jekyll automatically on every push to main.
+# Edit text and photos at https://app.pagescms.org (see README.md), or edit the files directly.
+title: Vnua Systems
+url: https://adrielvent.github.io
+baseurl: /vnua-systems
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+exclude:
+  - README.md
+  - .pages.yml

@@ -1,0 +1,61 @@
+hero_title: I'm building tools for machine shops.
+hero_text: Small shops make a lot of the parts that go into defense and aerospace. I want to help them keep track of drawing changes and prove how every part was made.
+hero_button: See what I'm working on
+hero_link: work.html
+hero_image: assets/img/skyline.jpg
+hero_credit: Manhattan from Long Island City. Photo by me.
+
+work_title: What I'm working on
+work_intro: Two tools so far. Both came out of my co-op, where I make engineering drawings, write change notices and build fixtures for the shop floor.
+tiles:
+  - title: DatumPane
+    text: Shows a shop exactly what changed between two versions of a drawing.
+    status: Idea
+    status_class: idea
+    image: assets/img/gdt-l-bracket-drawing.jpg
+    contain: true
+    link: datumpane.html
+  - title: Vnua Lock
+    text: Talk while you work and get a work log back. I use it every day.
+    status: Web app works
+    status_class: building
+    image: assets/img/vnua-lock-web.jpg
+    contain: false
+    link: vnua-lock.html
+  - title: Engineering
+    text: My co-op, class and club projects, with what I did and didn't test.
+    status: ""
+    status_class: ""
+    image: assets/img/fea-l-bracket.jpg
+    contain: false
+    link: engineering.html
+
+contract_title: The Contract
+contract_text: We didn't make AIAA's Design/Build/Fly this year. So this spring, my co-president and I are each running a company and going after the same made-up contract for the whole semester.
+contract_button: How it works
+contract_link: contract.html
+
+news_title: Latest news
+news:
+  - date: 2026-11-20
+    title: No DBF this year, so we're making our own
+    text: Our Design/Build/Fly proposal didn't make the cut. Instead of waiting a year, Hofstra AIAA is running a contract competition in the spring.
+    image: ""
+    link: contract.html
+  - date: 2026-11-12
+    title: Hofstra AIAA is official again
+    text: AIAA approved us as a student branch in Region I. I emailed a professor asking if the branch was still alive, and now it is.
+    image: ""
+    link: ""
+  - date: 2026-11-06
+    title: Took the team to NGEN's space tech day
+    text: Six of us from Hofstra AIAA spent the day in Manhattan at NGEN, with panels on space startups and a $150K pitch competition.
+    image: assets/img/ngen-2026.jpg
+    link: ""
+
+founder_title: Hey, I'm Adriel.
+founder_text: I study mechanical engineering at Hofstra and I'm doing a co-op at Stellant Systems. I'm president of SHPE, co-president of AIAA and co-president of ASME. Vnua comes from my last name, Ventura. I came up with it in eighth grade and I've put it on my work ever since.
+founder_image: assets/img/adriel-stellant.jpg
+founder_caption: At Stellant this summer.
+founder_button: More about me
+founder_link: about.html

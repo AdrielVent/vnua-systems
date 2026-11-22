@@ -1,27 +1,27 @@
 # Vnua Systems
 
-The site for Vnua Systems, Vnua Industries' defense manufacturing work: https://adrielvent.github.io/vnua-systems/
+https://adrielvent.github.io/vnua-systems/
 
-Plain HTML pages, no build step. GitHub Pages serves this folder as-is.
+## Editing
 
-| Page | What's on it |
+The easy way: go to https://app.pagescms.org, sign in with GitHub, and open `AdrielVent/vnua-systems`.
+You get forms for the home page, every page, the programs list, the menu and the footer, and you can upload photos.
+Saving commits to `main`, and GitHub Pages rebuilds the site in about a minute.
+
+By hand:
+
+| File | What's in it |
 | --- | --- |
-| `index.html` | Home: what Vnua Systems does, why now (with sources), programs, the contract exercise |
-| `work.html` | Programs: every product with its real status |
-| `datumpane.html`, `vnua-lock.html` | Defense manufacturing programs: spec sheet on the left, the story on the right |
-| `contract.html` | HAIAA-27-01, Hofstra AIAA's contract competition after not being selected for DBF |
-| `vnua-connect.html`, `vnua-apparel.html` | Other work under Vnua Industries |
-| `engineering.html`, `about.html`, `contact.html` | Engineering projects, about, contact |
-| `404.html` | Not-found page |
+| `_data/home.yml` | Home page: headline, photo, tiles, the blue contract band, news, the about-me strip |
+| `_data/programs.yml` | The Programs list |
+| `_data/site.yml` | Name at the top, menu (with dropdowns), footer |
+| `pages/*.md` | Every other page. Text is Markdown; the "At a glance" box is `facts` at the top |
+| `assets/img/` | Photos |
+| `assets/site.css` | The look. The store uses the same file |
 
-Every page has the same header and footer. If you add a page, copy them from an existing one and put
-`aria-current="page"` on its tab. All styles are in `assets/site.css`; the store uses the same file.
+## How it's built
 
-Type is Oswald (headings), Source Sans 3 (text) and Cousine (labels), served from `assets/fonts/` under the
-SIL Open Font License (license files are next to the fonts).
+GitHub Pages builds it with Jekyll on every push to `main`. Layouts are in `_layouts/` and `_includes/`.
+To preview locally: `jekyll serve` (Jekyll 3.10, the version GitHub Pages runs).
 
-`assets/site.js` only tightens the header on scroll and fades sections in. It skips the fade when Reduce
-Motion is on, and every page works without it.
-
-Facts on the site link to their sources. If you change a fact, change its source too, and update the
-"Checked" date in that page's Sources section.
+Type is Barlow (the typeface Blue Origin uses) with Cousine, served from `assets/fonts/` under the SIL Open Font License.
