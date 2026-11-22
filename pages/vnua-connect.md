@@ -15,7 +15,7 @@ facts:
   - label: Built with
     value: HTML, CSS, JavaScript, Supabase, SwiftUI
   - label: Links
-    value: "[Open Vnua Connect](https://adrielvent.github.io/Vnua-Connect/) · [Code on GitHub](https://github.com/AdrielVent/Vnua-Connect)"
+    value: "[Open Vnua Connect](https://adrielvent.github.io/Vnua-Connect/)"
 ---
 ## Why I built it
 
