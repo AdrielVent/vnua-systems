@@ -19,6 +19,7 @@
     if (btn) {
       var next = theme === 'dark' ? 'light' : 'dark';
       btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+      btn.setAttribute('title', 'Switch to ' + next + ' mode');
       btn.querySelector('.label').textContent = next === 'dark' ? 'Dark' : 'Light';
     }
   }

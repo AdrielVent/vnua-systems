@@ -24,4 +24,4 @@ By hand:
 GitHub Pages builds it with Jekyll on every push to `main`. Layouts are in `_layouts/` and `_includes/`.
 To preview locally: `jekyll serve` (Jekyll 3.10, the version GitHub Pages runs).
 
-Type is Barlow (the typeface Blue Origin uses) with Cousine, served from `assets/fonts/` under the SIL Open Font License.
+Type: Barlow for the name, menu and headings (a DIN-style face like the DIN on Lockheed Martin's 2016 site; Blue Origin uses Barlow today), served from `assets/fonts/` under the SIL Open Font License. Body text is Helvetica/Arial, which is what Lockheed, SpaceX and most big sites used for body text in 2016.

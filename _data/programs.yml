@@ -7,8 +7,8 @@
   group: Defense manufacturing
 - name: Vnua Lock
   link: vnua-lock.html
-  text: A voice log for people who build things. The web version works and never uploads your audio.
-  status: Web app works, iPhone app in progress
+  text: A voice log for people who build things. The web version works and never uploads your audio. The iPhone app is in progress.
+  status: Web app works
   status_class: building
   group: Defense manufacturing
 - name: Build record

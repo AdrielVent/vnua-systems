@@ -4,9 +4,12 @@ layout: default
 {% assign h = site.data.home %}
 <section class="hero" style="background-image: url('{{ h.hero_image }}')" aria-labelledby="hero-title">
   <div class="wrap">
-    <h1 id="hero-title">{{ h.hero_title }}</h1>
-    <p>{{ h.hero_text }}</p>
-    {% if h.hero_button %}<a class="btn" href="{{ h.hero_link }}">{{ h.hero_button }}</a>{% endif %}
+    <div class="caption">
+      {% if h.hero_kicker %}<p class="kicker">{{ h.hero_kicker }}</p>{% endif %}
+      <h1 id="hero-title">{{ h.hero_title }}</h1>
+      <p>{{ h.hero_text }}</p>
+      {% if h.hero_button %}<a class="btn" href="{{ h.hero_link }}">{{ h.hero_button }}</a>{% endif %}
+    </div>
   </div>
   {% if h.hero_credit %}<span class="credit">{{ h.hero_credit }}</span>{% endif %}
 </section>
@@ -41,17 +44,18 @@ layout: default
 <section class="block" aria-labelledby="news-title">
   <div class="wrap">
     <div class="block-head"><h2 id="news-title">{{ h.news_title }}</h2></div>
-    <div class="news">
+    <ul class="news-list">
       {% for n in h.news %}
-      <article>
-        {% if n.image != "" %}<span class="pic"><img src="{{ n.image }}" alt="" loading="lazy"></span>{% endif %}
-        <time datetime="{{ n.date | date: '%Y-%m-%d' }}">{{ n.date | date: '%b %-d, %Y' }}</time>
-        <h3>{{ n.title }}</h3>
-        <p>{{ n.text }}</p>
-        {% if n.link != "" %}<a class="more" href="{{ n.link }}">Read more</a>{% endif %}
-      </article>
+      <li{% if n.image != "" %} class="has-pic"{% endif %}>
+        {% if n.image != "" %}<img class="thumb" src="{{ n.image }}" alt="" loading="lazy">{% endif %}
+        <div class="text">
+          <time datetime="{{ n.date | date: '%Y-%m-%d' }}">{{ n.date | date: '%B %-d, %Y' }}</time>
+          {% if n.link != "" %}<a class="title" href="{{ n.link }}">{{ n.title }}</a>{% else %}<span class="title">{{ n.title }}</span>{% endif %}
+          <p>{{ n.text }}</p>
+        </div>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
   </div>
 </section>
 

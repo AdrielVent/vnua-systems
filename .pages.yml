@@ -11,6 +11,7 @@ content:
     path: _data/home.yml
     format: yaml
     fields:
+      - { name: hero_kicker, label: Small line above the headline, type: string }
       - { name: hero_title, label: Big headline, type: string }
       - { name: hero_text, label: Text under the headline, type: text }
       - { name: hero_image, label: Photo behind the headline, type: image }
